@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+  <title>登录</title>
+  <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.validator/2.1.6/vue-validator.min.js"></script>
+  
+  <style type="text/css">
+  #app{
+    padding-top: 40px;
+  }
+    .logo{text-align: center;}
+    .logo img{margin:2rem;border-radius: 100px;}
+    .cell-box{
+      padding-left: 1rem;
+      background-color: #fff;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+    .cell-box p{
+      border-bottom: 1px solid #d8d8d8;
+      line-height: 4rem;
+      font-size: 1.4rem;
+
+
+    }
+    .cell-box p label{width: 6rem;display: inline-block;}
+    .cell-box input{
+      font-size: 1.4rem;
+    }
+    .w90{padding: 0 1rem;margin: auto;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <mt-header fixed title="移动发车工具"></mt-header>
+    <div class="logo">
+      <img src="../images/100x100.png">
+      <h1>易行车辆采集工具</h1>
+    </div>
+    <div class="cell-box">
+      <p class="cell"><label>用户名</label><input v-model="user" type="tel" placeholder="请输入您的手机号"/></p>
+      <p class="cell"><label>密码</label><input v-model="pwd" type="password" placeholder="请输入您的登录密码"/></p>
+    </div>
+    <div class="w90"><mt-button size="large" type="primary" @click="sendForm">登录</mt-button></div>
+    
+  </div>
+  
+</body>
+<script type="text/javascript">
+document.documentElement.style.fontSize=document.documentElement.clientWidth/37.5+'px'; 
+document.body.addEventListener('touchstart', function () {});  //开启ios伪类
+  var vm = new Vue({
+    el: '#app',
+    data:{
+      user:'',
+      pwd:'',
+    },
+    methods: {
+      sendForm(event) {
+        alert('user'+this.user+'pwd'+this.pwd);
+        axios.post('http://www.baidu.com',{'user':this.user,'pwd':this.pwd})
+      }
+    }
+  })
+</script>
+</html>
